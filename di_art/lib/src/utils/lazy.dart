@@ -1,69 +1,32 @@
 
 /// USAGE
 ///
-/// Example 1:
-///
-/// class SomeClass {
-///  var _v  = new Lazy<int>(() {
-///    return 10;
-///  });
-///  int get v => _v();
-///}
-///
-/// void main() {
-///  var sc = new SomeClass();
-///  print(sc.v);
-///}
-///
-/// Example 2:
-///
-/// class Fibonacci {
-///  final int n;
-///
-///  var _result;
-///  int get result => _result();
-///
-///  Fibonacci(this.n) {
-///     _result = new Lazy<int>(() => _compute(this.n));
-///  }
-///
-///  int _compute(n) {
-///    if ( n == 0 )
-///      return 0;
-///   	else if ( n == 1 )
-///      return 1;
-///   	else
-///      return (_compute(n-1) + _compute(n-2));
-///  }
-///}
-///
-///  void main() {
-///    print(new Fibonacci(5).result);
-///}
+/// Wrap the variable in the global lazy function:
+/// String text = lazy<String>(() => "Text")();
 
+/// API
 
-class Lazy<T> {
+Lazy<T> lazy<T>(T Function() function) => Lazy._lazy(function);
 
-  // MARK: - Properties
+abstract class Lazy<T> {
+  T call();
+  factory Lazy._lazy(T Function() function) => _LazyImpl<T>(function);
+}
 
-  static final _cache = new Expando();
-  final Function _func;
-  const Lazy(this._func);
+/// Private
 
-  // MARK: - API
+class _LazyImpl<T> implements Lazy<T>{
 
-  T call() {
-    var result = _cache[this];
-    if (identical(this, result)) {
-      return null;
+  final Function _initializer;
+  T _value;
+
+  _LazyImpl(this._initializer);
+
+  T call()  {
+    if (_value == null) {
+      _value = _initializer != null ? _initializer() : null;
     }
-    if (result != null) {
-      return result;
-    }
-    result = _func();
-    _cache[this] = (result == null) ? this : result;
-
-    return result;
+    return _value;
   }
 
 }
