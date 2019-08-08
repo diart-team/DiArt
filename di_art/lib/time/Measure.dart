@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import 'package:di_art/utils/Pair.dart';
 
-import 'error_test.dart';
-import 'time_test.dart';
-import 'utils_test.dart';
-
-void main() {
-  errorFolderTests();
-  timeFolderTests();
-  utilsFolderTests();
+double measureDurationOnly(Function code){
+  int start = DateTime.now().microsecondsSinceEpoch;
+  code();
+  return (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
 }
 
-
+Pair<T, double> measureDuration<T>(T Function() code){
+  int start = DateTime.now().microsecondsSinceEpoch;
+  T result = code();
+  double duration = (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
+  return Pair(result, duration);
+}
 
