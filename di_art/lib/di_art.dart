@@ -54,7 +54,7 @@ class DiArt {
 
   // TODO: bind??
 
-//  _createEagerInstances() {
+//  createEagerInstances() {
 //    rootScore.createEagerInstances();
 //  }
 
@@ -87,7 +87,7 @@ class DiArt {
 
   /// Save property
 //  void setProperty<T>(String key, T value) {
-//    propertyRegistry.savePropert(key, value);
+//    propertyRegistry.saveProperty(key, value);
 //  }
 
   /// Close all resources from the context
