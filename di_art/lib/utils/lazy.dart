@@ -28,6 +28,7 @@ abstract class Lazy<T> {
 }
 
 /// Private
+
 class _LazyImpl<T> implements Lazy<T>{
 
   final Function _initializer;
