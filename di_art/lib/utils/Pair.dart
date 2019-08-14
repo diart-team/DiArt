@@ -13,16 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+class Pair<T, R> {
 
-import 'error_test.dart';
-import 'time_test.dart';
-import 'utils_test.dart';
+  final T first;
+  final R second;
 
-void main() {
-  errorFolderTests();
-  timeFolderTests();
-  utilsFolderTests();
+  Pair(this.first, this.second);
+
+  @override
+  String toString() => 'Pair[$first, $second]';
+
+  @override
+  bool operator ==(other) {
+    return (other is Pair<T, R> && other.first == first && other.second == second);
+  }
+
+
 }
-
-
 
