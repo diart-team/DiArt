@@ -49,7 +49,13 @@ class DefinitionParameters {
   /// Get element at given index
   /// return T
   ///
-  T get<T>(int i) => params[i] as T;
+  T get<T>([int i]) {
+    if (i == null) {
+      return _first();
+    } else {
+      return params[i] as T;
+    }
+  }
 
   ///
   /// Number of contained elements
@@ -70,13 +76,13 @@ class DefinitionParameters {
   /// Get first element of given type T
   /// return T
   ///
-  T first<T>() => params.firstWhere((p) => p is T);
+  T _first<T>() => params.firstWhere((p) => p is T);
 }
 
 const MAX_PARAMS = 5;
 const TAG = "DefinitionParameters";
 
-DefinitionParameters parametersOf(List parameters) {
+DefinitionParameters parametersOf([List parameters = const []]) {
   if (parameters.length <= MAX_PARAMS) {
     return DefinitionParameters(parameters);
   } else {
