@@ -15,7 +15,7 @@
  */
 import 'dart:io';
 
-import 'package:di_art/time/Measure.dart';
+import 'package:di_art/time/measure.dart';
 import 'package:test/test.dart';
 
 void main() {
