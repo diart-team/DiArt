@@ -35,7 +35,7 @@ parameterFolderTests() {
     });
 
     test('create an empty parameters holder', () {
-      DefinitionParameters parameterHolder = parametersOf();
+      DefinitionParameters parameterHolder = emptyParametersHolder();
 
       expect(parameterHolder.size(), 0);
       expect(parameterHolder.isEmpty(), isTrue);
@@ -52,11 +52,31 @@ parameterFolderTests() {
       expect(myInt, component2);
     });
 
+    test('get parameters from a parameter holder by its index', () {
+      String myString = "empty";
+      int myInt = 42;
+
+      DefinitionParameters parameterHolder = parametersOf([myString, myInt]);
+      var parameter1 = parameterHolder.get(0);
+      var parameter2 = parameterHolder.get(1);
+      expect(myString, parameter1);
+      expect(myInt, parameter2);
+    });
+
+    test('get first parameter from a parameter holder', () {
+      String myString = "empty";
+
+      DefinitionParameters parameterHolder = parametersOf([myString]);
+      var parameter1 = parameterHolder.get();
+      expect(myString, parameter1);
+    });
+
+
     test('can`t create parameters more than max params', () {
       try {
         parametersOf([1, 2, 3, 4, 5, 6]);
-        fail("Can't build more than $MAX_PARAMS");
-      } on TestFailure catch (e, s) {
+      } on Exception catch (e, s) {
+        print(e.toString());
         print(s);
       }
     });

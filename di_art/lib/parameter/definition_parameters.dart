@@ -15,7 +15,6 @@
  */
 
 import 'package:di_art/error/NoParameterFoundException.dart';
-import 'package:logart/logart.dart';
 
 ///
 /// DefinitionParameters - Parameter holder
@@ -24,7 +23,7 @@ import 'package:logart/logart.dart';
 class DefinitionParameters {
   List params;
 
-  DefinitionParameters(this.params);
+  DefinitionParameters([this.params = const[]]);
 
   T _elementAt<T>(int i) {
     if (params.length > i) {
@@ -79,21 +78,21 @@ class DefinitionParameters {
   T _first<T>() => params.firstWhere((p) => p is T);
 }
 
-const MAX_PARAMS = 5;
-const TAG = "DefinitionParameters";
+const maxParams = 5;
+const tag = "DefinitionParameters";
 
-DefinitionParameters parametersOf([List parameters = const []]) {
-  if (parameters.length <= MAX_PARAMS) {
+DefinitionParameters parametersOf(List parameters) {
+  if (parameters.length <= maxParams) {
     return DefinitionParameters(parameters);
   } else {
-    error(TAG,
-        "Can't build DefinitionParameters for more than $MAX_PARAMS arguments");
+    throw Exception(
+        "$tag: Can't build DefinitionParameters for more than $maxParams arguments");
   }
 }
 
-DefinitionParameters emptyParametersHolder() => DefinitionParameters([]);
+DefinitionParameters emptyParametersHolder() => DefinitionParameters();
 
 ///
 /// Help define a DefinitionParameters
 ///
-DefinitionParameters Function() ParametersDefinition;
+typedef ParametersDefinition = DefinitionParameters Function();
