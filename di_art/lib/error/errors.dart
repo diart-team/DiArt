@@ -13,14 +13,127 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export 'BadScopeInstanceException.dart';
-export 'DefinitionOverrideException.dart';
-export 'DiArtAppAlreadyStartedException.dart';
-export 'InstanceCreationException.dart';
-export 'MissingPropertyException.dart';
-export 'NoBeanDefFoundException.dart';
-export 'NoParameterFoundException.dart';
-export 'NoPropertyFileFoundException.dart';
-export 'NoScopeDefinitionFoundException.dart';
-export 'ScopeAlreadyCreatedException.dart';
-export 'ScopeNotCreatedException.dart';
+
+//export 'BadScopeInstanceException.dart';
+//export 'DefinitionOverrideException.dart';
+//export 'DiArtAppAlreadyStartedException.dart';
+//export 'InstanceCreationException.dart';
+//export 'MissingPropertyException.dart';
+//export 'NoBeanDefFoundException.dart';
+//export 'NoParameterFoundException.dart';
+//export 'NoPropertyFileFoundException.dart';
+//export 'NoScopeDefinitionFoundException.dart';
+//export 'ScopeAlreadyCreatedException.dart';
+//export 'ScopeNotCreatedException.dart';
+
+class BadScopeInstanceException implements Exception{
+
+  final String s;
+
+  BadScopeInstanceException(this.s);
+
+  @override
+  String toString() => 'BadScopeInstanceException: $s';
+}
+
+class DefinitionOverrideException implements Exception{
+
+  final String msg;
+
+  DefinitionOverrideException(this.msg);
+
+  @override
+  String toString() => 'DefinitionOverrideException: $msg';
+}
+
+class DiArtAppAlreadyStartedException implements Exception{
+
+  final String msg;
+
+  DiArtAppAlreadyStartedException(this.msg);
+
+  @override
+  String toString() => 'DiArtAppAlreadyStartedException: $msg';
+}
+
+class InstanceCreationException implements Exception{
+
+  final String msg;
+
+  final Exception parent;
+
+  InstanceCreationException(this.msg, this.parent);
+
+  @override
+  String toString() => 'InstanceCreationException: $msg';
+}
+
+class MissingPropertyException implements Exception{
+
+  final String msg;
+
+  MissingPropertyException(this.msg);
+
+  @override
+  String toString() => 'MissingPropertyException: $msg';
+}
+
+class NoBeanDefFoundException implements Exception{
+
+  final String msg;
+
+  NoBeanDefFoundException(this.msg);
+
+  @override
+  String toString() => 'NoBeanDefFoundException: $msg';
+}
+
+class NoParameterFoundException implements Exception{
+
+  final String msg;
+
+  NoParameterFoundException(this.msg);
+
+  @override
+  String toString() => 'NoParameterFoundException: $msg';
+}
+
+class NoPropertyFileFoundException implements Exception{
+
+  final String msg;
+
+  NoPropertyFileFoundException(this.msg);
+
+  @override
+  String toString() => 'NoPropertyFileFoundException: $msg';
+}
+
+class NoScopeDefinitionFoundException implements Exception{
+
+  final String s;
+
+  NoScopeDefinitionFoundException(this.s);
+
+  @override
+  String toString() => 'NoScopeDefinitionFoundException: $s';
+}
+
+class ScopeAlreadyCreatedException implements Exception{
+
+  final String s;
+
+  ScopeAlreadyCreatedException(this.s);
+
+  @override
+  String toString() => 'ScopeAlreadyCreatedException: $s';
+}
+
+class ScopeNotCreatedException implements Exception{
+
+  final String msg;
+
+  ScopeNotCreatedException(this.msg);
+
+  @override
+  String toString() => 'ScopeNotCreatedException: $msg';
+}

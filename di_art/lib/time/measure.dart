@@ -16,15 +16,15 @@
 import 'package:di_art/utils/pair.dart';
 
 double measureDurationOnly(Function code){
-  int start = DateTime.now().microsecondsSinceEpoch;
+  var start = DateTime.now().microsecondsSinceEpoch;
   code();
   return (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
 }
 
 Pair<T, double> measureDuration<T>(T Function() code){
-  int start = DateTime.now().microsecondsSinceEpoch;
-  T result = code();
-  double duration = (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
+  final start = DateTime.now().microsecondsSinceEpoch;
+  final result = code();
+  final duration = (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
   return Pair(result, duration);
 }
 

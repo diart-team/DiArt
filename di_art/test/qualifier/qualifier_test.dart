@@ -9,8 +9,8 @@ void main(){
 
 // `qualifier` folder tests
 qualifierFolderTests() {
-  group("`qualifier` folder", () {
-      String name = "Name";
+  group('`qualifier` folder', () {
+      final name = 'Name';
       qualifierTest<StringQualifier>(named(name), name);
       qualifierTest<TypeQualifier>(named<String>(), name.runtimeType.toString());
       qualifierTest<StringQualifier>(named<int>(name), name);

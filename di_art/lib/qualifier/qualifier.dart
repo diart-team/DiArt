@@ -14,13 +14,7 @@
  * limitations under the License.
  */
 
-Qualifier named<T>([String name]) {
-  if(name != null){
-    return Qualifier._byName(name);
-  }else{
-    return Qualifier._byType(T);
-  }
-}
+Qualifier named<T>([String name]) => name != null ? Qualifier._byName(name) : Qualifier._byType(T);
 
 // Help qualify a component
 abstract class Qualifier{
@@ -40,9 +34,7 @@ class StringQualifier implements Qualifier{
   StringQualifier(this._name);
 
   @override
-  String toString() {
-    return _name;
-  }
+  String toString() => _name;
 
 }
 
@@ -53,9 +45,7 @@ class TypeQualifier implements Qualifier{
   TypeQualifier(this._type);
 
   @override
-  String toString() {
-    return _type.toString();
-  }
+  String toString() => _type.toString();
 
 }
 

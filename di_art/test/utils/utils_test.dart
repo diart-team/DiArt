@@ -22,15 +22,14 @@ void main() {
   utilsFolderTests();
 }
 
-
 // `utils` folder tests
 utilsFolderTests() {
-  group("`utils` folder", () {
+  group('`utils` folder', () {
     test('lazy class test', () {
-      String key = "Key";
-      String value = "Value";
-      Pair<String, String> msg = Pair(key, value);
-      int countInitialization = 0;
+      final key = 'Key';
+      final value = 'Value';
+      final msg = Pair(key, value);
+      var countInitialization = 0;
       var lazyValue = lazy<Pair>(() {
         countInitialization++;
         return msg;

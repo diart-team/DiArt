@@ -25,9 +25,12 @@ class Pair<T, R> {
 
   @override
   bool operator ==(other) {
-    return (other is Pair<T, R> && other.first == first && other.second == second);
+    return other is Pair<T, R> && other.first == first && other.second == second;
   }
 
-
+  @override
+  int get hashCode =>
+      first.hashCode ^
+      second.hashCode;
 }
 

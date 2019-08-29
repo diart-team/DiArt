@@ -30,11 +30,12 @@ abstract class Lazy<T> {
 /// Private
 class _LazyImpl<T> implements Lazy<T>{
 
-  final Function _initializer;
+  final T Function() _initializer;
   T _value;
 
   _LazyImpl(this._initializer);
 
-  T call()  => _value ??= _initializer != null ? _initializer() : null;
+  @override
+  T call()  => _value ??= (_initializer != null ? _initializer() : null);
 
 }
