@@ -13,11 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class ScopeNotCreatedException implements Exception{
+import 'package:di_art/utils/pair.dart';
 
-  final String msg;
-
-  ScopeNotCreatedException(this.msg);
-
-  String toString() => "ScopeNotCreatedException: $msg";
+double measureDurationOnly(Function code){
+  var start = DateTime.now().microsecondsSinceEpoch;
+  code();
+  return (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
 }
+
+Pair<T, double> measureDuration<T>(T Function() code){
+  final start = DateTime.now().microsecondsSinceEpoch;
+  final result = code();
+  final duration = (DateTime.now().microsecondsSinceEpoch - start) / 1000000.0;
+  return Pair(result, duration);
+}
+

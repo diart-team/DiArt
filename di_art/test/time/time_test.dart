@@ -15,7 +15,7 @@
  */
 import 'dart:io';
 
-import 'package:di_art/time/Measure.dart';
+import 'package:di_art/time/measure.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -25,11 +25,11 @@ void main() {
 
 // `time` folder tests
 timeFolderTests() {
-  const int delay = 2;
-  group("`time` folder", () {
+  const delay = 2;
+  group('`time` folder', () {
 
     test('measure duration only test', () {
-      bool isExecuted = false;
+      var isExecuted = false;
       var result = measureDurationOnly((){
         isExecuted = true;
         sleep(const Duration(seconds: delay));
@@ -39,8 +39,8 @@ timeFolderTests() {
     });
 
     test('measure duration test', () {
-      bool isExecuted = false;
-      String resultStr = "Success!";
+      var isExecuted = false;
+      final resultStr = 'Success!';
       var result = measureDuration((){
         isExecuted = true;
         sleep(const Duration(seconds: delay));

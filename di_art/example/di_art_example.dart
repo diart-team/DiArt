@@ -13,11 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class NoPropertyFileFoundException implements Exception{
 
-  final String msg;
+library di_art;
 
-  NoPropertyFileFoundException(this.msg);
-
-  String toString() => "NoPropertyFileFoundException: $msg";
-}

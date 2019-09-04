@@ -22,8 +22,8 @@ void main() {
 
 // `error` folder tests
 errorFolderTests() {
-  String msg = "Message";
-  group("`error` folder", () {
+  final msg = 'Message';
+  group('`error` folder', () {
     exceptionTest<BadScopeInstanceException>(BadScopeInstanceException(msg), msg);
     exceptionTest<DefinitionOverrideException>(DefinitionOverrideException(msg), msg);
     exceptionTest<DiArtAppAlreadyStartedException>(DiArtAppAlreadyStartedException(msg), msg);
@@ -42,6 +42,6 @@ exceptionTest<T extends Exception>(Exception exception, String msg) {
   test('$T test', () {
     expect(() => throw exception,
         allOf([throwsException, throwsA(isA<T>())]));
-    expect(exception.toString(), equals("$T: $msg"));
+    expect(exception.toString(), equals('$T: $msg'));
   });
 }

@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-import 'error_test.dart';
-import 'time_test.dart';
-import 'utils_test.dart';
+import 'error/error_test.dart';
+import 'qualifier/qualifier_test.dart';
+import 'time/time_test.dart';
+import 'utils/utils_test.dart';
 
 void main() {
   errorFolderTests();
   timeFolderTests();
   utilsFolderTests();
+  qualifierFolderTests();
 }
 
 
