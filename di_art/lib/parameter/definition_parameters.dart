@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-import 'package:di_art/error/NoParameterFoundException.dart';
+import 'package:di_art/error/errors.dart';
+import 'package:equatable/equatable.dart';
 
 ///
 /// DefinitionParameters - Parameter holder
 /// Usable with exploded declaration
 ///
-class DefinitionParameters {
-  List params;
+class DefinitionParameters extends Equatable {
+  final List params;
 
-  DefinitionParameters([this.params = const[]]);
+  DefinitionParameters([this.params = const[]]) :super([params]);
 
   T _elementAt<T>(int i) {
     if (params.length > i) {
       return params[i] as T;
     } else {
       throw NoParameterFoundException(
-          "Can't get parameter value #$i from $this");
+          'Can\'t get parameter value #$i from $this');
     }
   }
 
@@ -64,7 +65,7 @@ class DefinitionParameters {
   ///
   /// Tells if it has no parameter
   ///
-  bool isEmpty() => params.length == 0;
+  bool isEmpty() => params.isEmpty;
 
   ///
   /// Tells if it has parameters
@@ -75,18 +76,18 @@ class DefinitionParameters {
   /// Get first element of given type T
   /// return T
   ///
-  T _first<T>() => params.firstWhere((p) => p is T);
+  T _first<T>() => params.firstWhere((p) => p is T) as T;
 }
 
 const maxParams = 5;
-const tag = "DefinitionParameters";
+const tag = 'DefinitionParameters';
 
 DefinitionParameters parametersOf(List parameters) {
   if (parameters.length <= maxParams) {
     return DefinitionParameters(parameters);
   } else {
     throw Exception(
-        "$tag: Can't build DefinitionParameters for more than $maxParams arguments");
+        '$tag: Can\'t build DefinitionParameters for more than $maxParams arguments');
   }
 }
 

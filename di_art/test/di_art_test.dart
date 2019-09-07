@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,6 +15,7 @@
  */
 
 import 'error/error_test.dart';
+import 'parameter/parameter_test.dart';
 import 'qualifier/qualifier_test.dart';
 import 'time/time_test.dart';
 import 'utils/utils_test.dart';
@@ -24,6 +25,7 @@ void main() {
   timeFolderTests();
   utilsFolderTests();
   qualifierFolderTests();
+  parameterFolderTests();
 }
 
 

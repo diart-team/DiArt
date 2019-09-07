@@ -23,29 +23,29 @@ void main() {
 
 // `parameter` folder tests
 parameterFolderTests() {
-  group("`parameter` folder", () {
+  group('`parameter` folder', () {
     test('create a parameters holder', () {
-      String myString = "empty";
-      int myInt = 42;
+      final myString = 'empty';
+      final myInt = 42;
 
-      DefinitionParameters parameterHolder = parametersOf([myString, myInt]);
+      final parameterHolder = parametersOf([myString, myInt]);
 
       expect(parameterHolder.size(), 2);
       expect(parameterHolder.isNotEmpty(), isTrue);
     });
 
     test('create an empty parameters holder', () {
-      DefinitionParameters parameterHolder = emptyParametersHolder();
+      final parameterHolder = emptyParametersHolder();
 
       expect(parameterHolder.size(), 0);
       expect(parameterHolder.isEmpty(), isTrue);
     });
 
     test('get parameters from a parameter holder', () {
-      String myString = "empty";
-      int myInt = 42;
+      final myString = 'empty';
+      final myInt = 42;
 
-      DefinitionParameters parameterHolder = parametersOf([myString, myInt]);
+      final parameterHolder = parametersOf([myString, myInt]);
       var component1 = parameterHolder.component1();
       var component2 = parameterHolder.component2();
       expect(myString, component1);
@@ -53,32 +53,53 @@ parameterFolderTests() {
     });
 
     test('get parameters from a parameter holder by its index', () {
-      String myString = "empty";
-      int myInt = 42;
+      final myString = 'empty';
+      final myInt = 42;
 
-      DefinitionParameters parameterHolder = parametersOf([myString, myInt]);
+      final parameterHolder = parametersOf([myString, myInt]);
       var parameter1 = parameterHolder.get(0);
       var parameter2 = parameterHolder.get(1);
       expect(myString, parameter1);
-      expect(myInt, parameter2);
+      expect(myInt, equals(parameter2));
     });
 
     test('get first parameter from a parameter holder', () {
-      String myString = "empty";
+      final myString = 'empty';
 
-      DefinitionParameters parameterHolder = parametersOf([myString]);
+      final parameterHolder = parametersOf([myString]);
       var parameter1 = parameterHolder.get();
-      expect(myString, parameter1);
+      expect(myString, equals(parameter1));
     });
 
 
     test('can`t create parameters more than max params', () {
       try {
         parametersOf([1, 2, 3, 4, 5, 6]);
+        fail('Can\'t build more than $maxParams');
       } on Exception catch (e, s) {
         print(e.toString());
         print(s);
       }
     });
+  });
+
+  test('compare two identical parameter holders', () {
+    final myString = 'empty';
+    final myInt = 42;
+
+    final parameterHolder = parametersOf([myString, myInt]);
+    final parameterHolderCopy = parametersOf([myString, myInt]);
+
+    expect(parameterHolder, equals(parameterHolderCopy));
+  });
+
+  test('compare two different parameter holders', () {
+    final myString = 'empty';
+    final myInt = 42;
+
+    final parameterHolder = parametersOf([myString, myInt]);
+    final parameterHolderCopy = parametersOf([myString]);
+
+    expect(parameterHolder, isNot(equals((parameterHolderCopy))));
   });
 }
