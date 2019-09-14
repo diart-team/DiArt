@@ -13,11 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class NoParameterFoundException implements Exception{
+class Pair<T, R> {
 
-  final String msg;
+  final T first;
+  final R second;
 
-  NoParameterFoundException(this.msg);
+  Pair(this.first, this.second);
 
-  String toString() => "NoParameterFoundException: $msg";
+  @override
+  String toString() => 'Pair[$first, $second]';
+
+  @override
+  bool operator ==(other) {
+    return other is Pair<T, R> && other.first == first && other.second == second;
+  }
+
+  @override
+  int get hashCode =>
+      first.hashCode ^
+      second.hashCode;
 }
+

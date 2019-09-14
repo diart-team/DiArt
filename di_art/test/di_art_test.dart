@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *       http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,34 +14,19 @@
  * limitations under the License.
  */
 
-import 'package:di_art/error/errors.dart';
-import 'package:test/test.dart';
+import 'error/error_test.dart';
+import 'parameter/parameter_test.dart';
+import 'qualifier/qualifier_test.dart';
+import 'time/time_test.dart';
+import 'utils/utils_test.dart';
 
 void main() {
   errorFolderTests();
+  timeFolderTests();
+  utilsFolderTests();
+  qualifierFolderTests();
+  parameterFolderTests();
 }
 
-errorFolderTests() {
-  String msg = "Message";
-  group("error folder", () {
-    exceptionTest<BadScopeInstanceException>(BadScopeInstanceException(msg), msg);
-    exceptionTest<DefinitionOverrideException>(DefinitionOverrideException(msg), msg);
-    exceptionTest<DiArtAppAlreadyStartedException>(DiArtAppAlreadyStartedException(msg), msg);
-    exceptionTest<InstanceCreationException>(InstanceCreationException(msg, Exception()), msg);
-    exceptionTest<MissingPropertyException>(MissingPropertyException(msg), msg);
-    exceptionTest<NoBeanDefFoundException>(NoBeanDefFoundException(msg), msg);
-    exceptionTest<NoParameterFoundException>(NoParameterFoundException(msg), msg);
-    exceptionTest<NoPropertyFileFoundException>(NoPropertyFileFoundException(msg), msg);
-    exceptionTest<NoScopeDefinitionFoundException>(NoScopeDefinitionFoundException(msg), msg);
-    exceptionTest<ScopeAlreadyCreatedException>(ScopeAlreadyCreatedException(msg), msg);
-    exceptionTest<ScopeAlreadyCreatedException>(ScopeAlreadyCreatedException(msg), msg);
-  });
-}
 
-exceptionTest<T extends Exception>(Exception exception, String msg) {
-  test('$T test', () {
-    expect(() => throw exception,
-        allOf([throwsException, throwsA(isA<T>())]));
-    expect(exception.toString(), equals("$T: $msg"));
-  });
-}
+

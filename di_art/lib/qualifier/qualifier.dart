@@ -13,30 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/// USAGE
-///
-/// Wrap the variable in the global lazy function:
-/// String text = lazy<String>(() => "Text")();
 
-/// API
+Qualifier named<T>([String name]) => name != null ? Qualifier._byName(name) : Qualifier._byType(T);
 
-Lazy<T> lazy<T>(T Function() function) => Lazy._lazy(function);
+// Help qualify a component
+abstract class Qualifier{
 
-abstract class Lazy<T> {
-  T call();
-  factory Lazy._lazy(T Function() function) => _LazyImpl<T>(function);
+  // Give a String qualifier
+  factory Qualifier._byName(String name)=> StringQualifier(name);
+
+  // Give a Type based qualifier
+  factory Qualifier._byType(Type type) => TypeQualifier(type);
 }
 
 /// Private
+class StringQualifier implements Qualifier{
 
-class _LazyImpl<T> implements Lazy<T>{
+  final String _name;
 
-  final T Function() _initializer;
-  T _value;
-
-  _LazyImpl(this._initializer);
+  StringQualifier(this._name);
 
   @override
-  T call()  => _value ??= (_initializer != null ? _initializer() : null);
+  String toString() => _name;
 
 }
+
+class TypeQualifier implements Qualifier{
+
+  final Type _type;
+
+  TypeQualifier(this._type);
+
+  @override
+  String toString() => _type.toString();
+
+}
+
