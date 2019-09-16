@@ -13,8 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import 'package:di_art/error/errors.dart';
 import 'package:test/test.dart';
+import 'package:di_art/di_art.dart'
+    show
+    BadScopeInstanceException,
+    DefinitionOverrideException,
+    DiArtAppAlreadyStartedException,
+    InstanceCreationException,
+    MissingPropertyException,
+    NoBeanDefFoundException,
+    NoParameterFoundException,
+    NoPropertyFileFoundException,
+    NoScopeDefinitionFoundException,
+    ScopeAlreadyCreatedException,
+    ScopeNotCreatedException;
 
 void main() {
   errorFolderTests();
@@ -34,7 +46,7 @@ errorFolderTests() {
     exceptionTest<NoPropertyFileFoundException>(NoPropertyFileFoundException(msg), msg);
     exceptionTest<NoScopeDefinitionFoundException>(NoScopeDefinitionFoundException(msg), msg);
     exceptionTest<ScopeAlreadyCreatedException>(ScopeAlreadyCreatedException(msg), msg);
-    exceptionTest<ScopeAlreadyCreatedException>(ScopeAlreadyCreatedException(msg), msg);
+    exceptionTest<ScopeNotCreatedException>(ScopeNotCreatedException(msg), msg);
   });
 }
 

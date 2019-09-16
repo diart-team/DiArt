@@ -16,3 +16,13 @@
 
 library di_art;
 
+export 'package:di_art/src/error/errors.dart';
+export 'package:di_art/src/parameter/definition_parameters.dart';
+export 'package:di_art/src/qualifier/qualifier.dart';
+export 'package:di_art/src/time/measure.dart';
+export 'package:di_art/src/utils/lazy.dart';
+export 'package:di_art/src/utils/pair.dart';
+
+
+
+

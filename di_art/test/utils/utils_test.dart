@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-import 'package:di_art/utils/pair.dart';
-import 'package:di_art/utils/lazy.dart';
+import 'package:di_art/di_art.dart' show Pair, lazy;
 import 'package:test/test.dart';
 
 void main() {
@@ -41,6 +40,5 @@ utilsFolderTests() {
       expect(lazyValue(), Pair(key, value));
       expect(countInitialization, 1);
     });
-
   });
 }

@@ -14,18 +14,6 @@
  * limitations under the License.
  */
 
-//export 'BadScopeInstanceException.dart';
-//export 'DefinitionOverrideException.dart';
-//export 'DiArtAppAlreadyStartedException.dart';
-//export 'InstanceCreationException.dart';
-//export 'MissingPropertyException.dart';
-//export 'NoBeanDefFoundException.dart';
-//export 'NoParameterFoundException.dart';
-//export 'NoPropertyFileFoundException.dart';
-//export 'NoScopeDefinitionFoundException.dart';
-//export 'ScopeAlreadyCreatedException.dart';
-//export 'ScopeNotCreatedException.dart';
-
 class BadScopeInstanceException implements Exception{
 
   final String s;

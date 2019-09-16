@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 import 'dart:io';
-
-import 'package:di_art/time/measure.dart';
+import 'package:di_art/di_art.dart' show measureDurationOnly, measureDuration;
 import 'package:test/test.dart';
 
 void main() {

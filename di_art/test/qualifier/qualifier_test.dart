@@ -1,6 +1,6 @@
 
 
-import 'package:di_art/qualifier/qualifier.dart';
+import 'package:di_art/di_art.dart';
 import 'package:test/test.dart';
 
 void main(){

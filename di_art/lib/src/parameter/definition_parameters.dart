@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import 'package:di_art/error/errors.dart';
+import 'package:di_art/src/error/errors.dart';
 import 'package:equatable/equatable.dart';
 
 ///

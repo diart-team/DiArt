@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import 'package:di_art/parameter/definition_parameters.dart';
+import 'package:di_art/di_art.dart' show parametersOf, emptyParametersHolder, maxParams;
 import 'package:test/test.dart';
 
 void main() {
