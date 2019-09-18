@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import 'definition/definition_test.dart';
 import 'error/error_test.dart';
 import 'parameter/parameter_test.dart';
 import 'qualifier/qualifier_test.dart';
@@ -26,6 +27,7 @@ void main() {
   utilsFolderTests();
   qualifierFolderTests();
   parameterFolderTests();
+  definitionFolderTests();
 }
 
 
