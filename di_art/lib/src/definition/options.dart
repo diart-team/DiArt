@@ -14,17 +14,26 @@
  * limitations under the License.
  */
 
-library di_art;
+///
+/// Bean Definitions options
+///
+class Options {
 
-export 'package:di_art/src/error/errors.dart';
-export 'package:di_art/src/parameter/definition_parameters.dart';
-export 'package:di_art/src/qualifier/qualifier.dart';
-export 'package:di_art/src/time/measure.dart';
-export 'package:di_art/src/utils/lazy.dart';
-export 'package:di_art/src/utils/pair.dart';
-export 'package:di_art/src/definition/properties.dart';
-export 'package:di_art/src/definition/options.dart';
+  bool override;
+  bool isCreatedAtStart;
 
+  Options([this.isCreatedAtStart = false, this.override = false]);
 
+  String toString() => 'Options{isCreatedAtStart: $isCreatedAtStart, override: $override}';
 
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Options &&
+              runtimeType == other.runtimeType &&
+              override == other.override &&
+              isCreatedAtStart == other.isCreatedAtStart;
 
+  int get hashCode =>
+      override.hashCode ^
+      isCreatedAtStart.hashCode;
+}
