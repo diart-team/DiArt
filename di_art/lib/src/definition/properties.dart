@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import 'package:di_art/di_art.dart';
+import 'package:di_art/src/error/errors.dart';
 
 ///
 /// Definitions Properties
