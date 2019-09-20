@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-import 'package:di_art/src/diart.dart';
-import 'package:meta/meta.dart';
+import 'package:di_art/src/scope/scope.dart';
 
-class Scope {
-  final String id;
-  final bool isRoot;
-  final DiArt _diArt;
+class DiArt {
+  Scope _rootScope;
 
-  Scope({@required this.id, this.isRoot = false, @required DiArt diArt})
-      : _diArt = diArt;
+  Scope get rootScope =>
+      _rootScope ??= Scope(id: '-Root-', isRoot: true, diArt: this);
 }

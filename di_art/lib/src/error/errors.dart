@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-class BadScopeInstanceException implements Exception{
-
+class BadScopeInstanceException implements Exception {
   final String s;
 
   BadScopeInstanceException(this.s);
@@ -24,8 +23,7 @@ class BadScopeInstanceException implements Exception{
   String toString() => 'BadScopeInstanceException: $s';
 }
 
-class DefinitionOverrideException implements Exception{
-
+class DefinitionOverrideException implements Exception {
   final String msg;
 
   DefinitionOverrideException(this.msg);
@@ -34,8 +32,7 @@ class DefinitionOverrideException implements Exception{
   String toString() => 'DefinitionOverrideException: $msg';
 }
 
-class DiArtAppAlreadyStartedException implements Exception{
-
+class DiArtAppAlreadyStartedException implements Exception {
   final String msg;
 
   DiArtAppAlreadyStartedException(this.msg);
@@ -44,8 +41,7 @@ class DiArtAppAlreadyStartedException implements Exception{
   String toString() => 'DiArtAppAlreadyStartedException: $msg';
 }
 
-class InstanceCreationException implements Exception{
-
+class InstanceCreationException implements Exception {
   final String msg;
 
   final Exception parent;
@@ -56,8 +52,7 @@ class InstanceCreationException implements Exception{
   String toString() => 'InstanceCreationException: $msg';
 }
 
-class MissingPropertyException implements Exception{
-
+class MissingPropertyException implements Exception {
   final String msg;
 
   MissingPropertyException(this.msg);
@@ -66,8 +61,7 @@ class MissingPropertyException implements Exception{
   String toString() => 'MissingPropertyException: $msg';
 }
 
-class NoBeanDefFoundException implements Exception{
-
+class NoBeanDefFoundException implements Exception {
   final String msg;
 
   NoBeanDefFoundException(this.msg);
@@ -76,8 +70,7 @@ class NoBeanDefFoundException implements Exception{
   String toString() => 'NoBeanDefFoundException: $msg';
 }
 
-class NoParameterFoundException implements Exception{
-
+class NoParameterFoundException implements Exception {
   final String msg;
 
   NoParameterFoundException(this.msg);
@@ -86,8 +79,7 @@ class NoParameterFoundException implements Exception{
   String toString() => 'NoParameterFoundException: $msg';
 }
 
-class NoPropertyFileFoundException implements Exception{
-
+class NoPropertyFileFoundException implements Exception {
   final String msg;
 
   NoPropertyFileFoundException(this.msg);
@@ -96,8 +88,7 @@ class NoPropertyFileFoundException implements Exception{
   String toString() => 'NoPropertyFileFoundException: $msg';
 }
 
-class NoScopeDefinitionFoundException implements Exception{
-
+class NoScopeDefinitionFoundException implements Exception {
   final String s;
 
   NoScopeDefinitionFoundException(this.s);
@@ -106,8 +97,7 @@ class NoScopeDefinitionFoundException implements Exception{
   String toString() => 'NoScopeDefinitionFoundException: $s';
 }
 
-class ScopeAlreadyCreatedException implements Exception{
-
+class ScopeAlreadyCreatedException implements Exception {
   final String s;
 
   ScopeAlreadyCreatedException(this.s);
@@ -116,8 +106,7 @@ class ScopeAlreadyCreatedException implements Exception{
   String toString() => 'ScopeAlreadyCreatedException: $s';
 }
 
-class ScopeNotCreatedException implements Exception{
-
+class ScopeNotCreatedException implements Exception {
   final String msg;
 
   ScopeNotCreatedException(this.msg);
@@ -125,3 +114,5 @@ class ScopeNotCreatedException implements Exception{
   @override
   String toString() => 'ScopeNotCreatedException: $msg';
 }
+
+error(String message) => throw Exception(message);

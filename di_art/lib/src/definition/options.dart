@@ -18,22 +18,20 @@
 /// Bean Definitions options
 ///
 class Options {
-
   bool override;
   bool isCreatedAtStart;
 
   Options([this.isCreatedAtStart = false, this.override = false]);
 
-  String toString() => 'Options{isCreatedAtStart: $isCreatedAtStart, override: $override}';
+  String toString() =>
+      'Options{isCreatedAtStart: $isCreatedAtStart, override: $override}';
 
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Options &&
-              runtimeType == other.runtimeType &&
-              override == other.override &&
-              isCreatedAtStart == other.isCreatedAtStart;
+      other is Options &&
+          runtimeType == other.runtimeType &&
+          override == other.override &&
+          isCreatedAtStart == other.isCreatedAtStart;
 
-  int get hashCode =>
-      override.hashCode ^
-      isCreatedAtStart.hashCode;
+  int get hashCode => override.hashCode ^ isCreatedAtStart.hashCode;
 }

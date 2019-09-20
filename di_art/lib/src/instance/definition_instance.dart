@@ -14,14 +14,18 @@
  * limitations under the License.
  */
 
+import 'package:di_art/src/diart.dart';
 import 'package:di_art/src/definition/bean_definition.dart';
-import 'package:logart/logart.dart';
+import 'package:di_art/src/error/errors.dart';
+import 'package:di_art/src/parameter/definition_parameters.dart';
+import 'package:di_art/src/scope/scope.dart';
 
 ///
-/// Koin Instance Holder
+/// DiArt Instance Holder
 /// create/get/release an instance of given definition
 ///
-abstract class DefinitionInstance<T>{
+abstract class DefinitionInstance<T> {
+  static const error_separator = '\n\t';
   final BeanDefinition<T> beanDefinition;
 
   DefinitionInstance(this.beanDefinition);
@@ -31,29 +35,51 @@ abstract class DefinitionInstance<T>{
   ///@param context
   ///@return T
   ///
-   T get(InstanceContext context);
+  T get(InstanceContext context);
 
   ///
   ///Create an instance
   ///@param context
   ///@return T
   ///
-  T create(InstanceContext context){
-    if (logger.isAt(Level.DEBUG)) {
-      debug("| create instance for $beanDefinition");
-    }
+  T create(InstanceContext context) {
+    ///Todo logger
     try {
-      val parameters: DefinitionParameters = context.parameters
-      val result = beanDefinition.definition(context.scope ?: error("Can't execute definition instance while this context is not registered against any Koin instance"), parameters)
-      return result as T
-    } catch (e: Exception) {
-    val stack =
-    e.toString() + ERROR_SEPARATOR + e.stackTrace.takeWhile { !it.className.contains("sun.reflect") }
-        .joinToString(ERROR_SEPARATOR)
-    logger.error("Instance creation error : could not create instance for $beanDefinition: $stack")
-    throw InstanceCreationException("Could not create instance for $beanDefinition", e)
+      var parameters = context.parameters;
+      if (context.scope == null) {
+        error(
+            "Can't execute definition instance while this context is not registered against any Koin instance");
+      }
+      return beanDefinition.definition(context.scope, parameters);
+    } on Exception catch (e) {
+      throw InstanceCreationException(
+          'Could not create instance for $beanDefinition', e);
     }
   }
+
+  ///
+  ///Is instance created
+  ///
+  bool isCreated(InstanceContext context);
+
+  ///
+  ///Release the held instance (if hold)
+  ///
+  bool release(InstanceContext context);
+
+  ///
+  ///close the instance allocation from registry
+  ///
+  close();
 }
 
-class InstanceContext{}
+class InstanceContext {
+  final DiArt diart;
+  final ParametersDefinition _parameters;
+  final Scope scope;
+  final DefinitionParameters parameters;
+
+  InstanceContext([this.diart, Scope scope, this._parameters])
+      : scope = scope ?? diart?.rootScope,
+        parameters = _parameters?.call() ?? emptyParametersHolder();
+}
