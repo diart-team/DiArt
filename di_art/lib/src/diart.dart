@@ -21,4 +21,13 @@ class DiArt {
 
   Scope get rootScope =>
       _rootScope ??= Scope(id: '-Root-', isRoot: true, diArt: this);
+
+  ///
+  /// get a scope instance
+  /// @param scopeId
+  ///
+  Scope getScope(String scopeId) {
+    //Todo scope registry
+//    return scopeRegistry.getScopeInstance(scopeId);
+  }
 }

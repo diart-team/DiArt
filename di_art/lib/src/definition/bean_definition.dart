@@ -57,7 +57,7 @@ class BeanDefinition<T> {
   var properties = Properties();
   Kind kind;
 
-  // lifecycle
+  /// lifecycle
   OnReleaseCallback<T> onRelease;
   OnCloseCallback<T> onClose;
 
@@ -67,12 +67,16 @@ class BeanDefinition<T> {
   /// Create the associated Instance Holder
   ///
   createInstanceHolder() {
+    ///Todo
     switch (kind) {
       case Kind.single:
+        instance = SingleDefinitionInstance(this);
         break;
       case Kind.factory:
+        instance = FactoryDefinitionInstance(this);
         break;
       case Kind.scoped:
+        instance = ScopeDefinitionInstance(this);
         break;
     }
   }
@@ -80,8 +84,9 @@ class BeanDefinition<T> {
   ///
   /// Resolve instance
   ///
-  T resolveInstance(InstanceContext context) {
-    var result = instance?.get(context);
+  // ignore: avoid_shadowing_type_parameters
+  T resolveInstance<T>(InstanceContext context) {
+    var result = instance?.get<T>(context);
     if (result == null) {
       error('Definition without any InstanceContext - $this');
     }

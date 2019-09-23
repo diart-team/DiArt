@@ -20,29 +20,28 @@ import 'package:di_art/src/error/errors.dart';
 /// Definitions Properties
 ///
 class Properties {
-
   final Map<String, Object> _data;
 
-  Properties([Map<String, Object> data]): _data = data ?? {};
+  Properties([Map<String, Object> data]) : _data = data ?? {};
 
-  set<T>(String key, T value){
+  set<T>(String key, T value) {
     _data[key] = value;
   }
 
-  T getOrNull<T>(String key){
+  T getOrNull<T>(String key) {
     final value = _data[key];
-    if(value is T){
+    if (value is T) {
       return value;
-    }else{
+    } else {
       return null;
     }
   }
 
   T get<T>(String key) {
     final value = _data[key];
-    if(value != null && value is T){
+    if (value != null && value is T) {
       return value;
-    }else{
+    } else {
       throw MissingPropertyException("missing property for '$key'");
     }
   }
@@ -50,16 +49,13 @@ class Properties {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Properties &&
-              runtimeType == other.runtimeType &&
-              toString() == other.toString();
+      other is Properties &&
+          runtimeType == other.runtimeType &&
+          toString() == other.toString();
 
   @override
   int get hashCode => _data.hashCode;
 
   @override
-  String toString() {
-    return 'Properties{_data: $_data}';
-  }
-
+  String toString() => 'Properties{_data: $_data}';
 }
